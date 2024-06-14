@@ -1,0 +1,19 @@
+[package]
+name = "KAWAI"
+version = "0.1.0"
+edition = "2021"
+build = "build/build.rs"
+
+[dependencies]
+entities = { path="src/engine/entities"}
+quickphf = "0.1.0"
+
+
+[build-dependencies]
+csv = "1.1"
+quickphf = { version = "0.1.0", default-features = false }
+quickphf_codegen = "0.1.1"
+struct-field-names-as-array = "0.3.0"
+entities = { path="src/engine/entities"}
+const-gen = "1.6.4"
+convert_case = "0.6.0"
