@@ -9,6 +9,8 @@ use std::{
 };
 use struct_field_names_as_array::FieldNamesAsArray;
 
+use itertools::Itertools;
+
 type Header = (String, Vec<String>);
 type Record = (String, Vec<u8>);
 
@@ -69,7 +71,7 @@ pub fn process_tileset_file(tileset_file: &Path, tileset_module: &Path) -> HashS
         Err(e) => panic!("Failed to write tile lookup, {}", e),
     };
 
-    movetypes_loc.keys().cloned().collect()
+    movetypes_loc.keys().sorted().cloned().collect()
 }
 
 /// A function to build the tileset module from the tileset CSV file. This will
@@ -149,15 +151,15 @@ fn define_movetype(
     file: &mut BufWriter<File>,
     movetypes: &MoveTypesLoc,
 ) -> Result<(), std::io::Error> {
-    // Write a movetypes enum
+    // Write a movetypes enum to be used for units
     writeln!(file, "pub enum MoveType {{")?;
-    for movetype in movetypes.keys() {
+    for movetype in movetypes.keys().sorted() {
         writeln!(file, "    {},", movetype)?;
     }
     writeln!(file, "}}\n")?;
 
     writeln!(file, "struct MoveCost {{")?;
-    for movetype in movetypes.keys() {
+    for movetype in movetypes.keys().sorted() {
         writeln!(file, "    {}_cost: u8,", movetype.to_case(Case::Snake))?;
     }
     writeln!(file, "}}\n")?;
@@ -168,7 +170,7 @@ fn define_movetype(
     pub fn cost(&self, movetype: MoveType) -> u8 {{
         match movetype {{"
     )?;
-    for movetype in movetypes.keys() {
+    for movetype in movetypes.keys().sorted() {
         writeln!(
             file,
             "            MoveType::{} => self.{}_cost,",
@@ -229,7 +231,7 @@ fn define_tile_constant(
     )?;
     writeln!(file, "    name: \"{}\",", name)?;
     writeln!(file, "    move_data: MoveCost {{")?;
-    for (movetype, cost) in move_costs {
+    for (movetype, cost) in move_costs.iter().sorted() {
         writeln!(
             file,
             "        {}_cost : {},",

@@ -17,3 +17,4 @@ struct-field-names-as-array = "0.3.0"
 entities = { path="src/engine/entities"}
 const-gen = "1.6.4"
 convert_case = "0.6.0"
+itertools = "0.8.2"
