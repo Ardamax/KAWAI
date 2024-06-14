@@ -258,7 +258,7 @@ fn write_tile_lookup(
         "pub fn get_tile(id:u8) -> Result<Tile, Box<dyn Error>> {{"
     )?;
     writeln!(file, "    let result = match id {{")?;
-    for (limits, const_name) in const_tiles {
+    for (limits, const_name) in const_tiles.iter().sorted() {
         if limits[1] - limits[0] <= 1 {
             writeln!(file, "        {} => {},", limits[0], const_name)?;
         } else {
