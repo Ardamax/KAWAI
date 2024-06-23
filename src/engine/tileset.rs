@@ -7,7 +7,7 @@ pub struct Tile {
 }
 
 impl Tile {
-    pub fn move_cost(&self, movetype: MoveType) -> u8 {
+    pub fn move_cost(&self, movetype: &MoveType) -> u8 {
         self.move_data.cost(movetype)
     }
 }
@@ -35,7 +35,7 @@ struct MoveCost {
 }
 
 impl MoveCost {
-    pub fn cost(&self, movetype: MoveType) -> u8 {
+    pub fn cost(&self, movetype: &MoveType) -> u8 {
         match movetype {
             MoveType::Air => self.air_cost,
             MoveType::Boot => self.boot_cost,
@@ -48,6 +48,7 @@ impl MoveCost {
        }
     }
 }
+
 const PLAINS: Tile = Tile {
     name: "Plains",
     move_data: MoveCost {

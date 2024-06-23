@@ -4,6 +4,8 @@ use std::fmt;
 
 use super::tileset::Tile;
 
+pub type Position = [u8; 2];
+
 /// Represents an Advance Wars map of maximum size 256x256 tiles
 #[derive(Debug)]
 pub struct GameMap {
@@ -35,12 +37,33 @@ impl GameMap {
         })
     }
 
-    pub fn terrain_at(&self, x: u8, y: u8) -> Tile {
-        let (x, y) = (x as usize, y as usize);
+    pub fn terrain_at(&self, position: Position) -> Tile {
+        let (x, y) = (position[0] as usize, position[1] as usize);
         if self.width as usize * y + x >= self.terrain.len() {
             panic!("Attempting to access nonexistant terrain")
         }
         tileset::get_tile(self.terrain[self.width as usize * y + x]).unwrap()
+    }
+
+    pub fn get_adjacent(&self, position: Position) -> Vec<[u8; 2]> {
+        let [x, y] = position;
+        let (width, height) = (self.width, self.height);
+        let check = |x: u8, y: u8| -> Option<[u8; 2]> {
+            if (0..=width).contains(&x) && (0..=height).contains(&y) {
+                return Some([x, y]);
+            }
+            return None;
+        };
+
+        vec![
+            check(x + 1, y),
+            check(x - 1, y),
+            check(x, y + 1),
+            check(x, y - 1),
+        ]
+        .iter()
+        .filter_map(|pos| *pos)
+        .collect()
     }
 }
 

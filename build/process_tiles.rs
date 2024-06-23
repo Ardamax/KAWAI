@@ -167,7 +167,7 @@ fn define_movetype(
     writeln!(
         file,
         "impl MoveCost {{
-    pub fn cost(&self, movetype: MoveType) -> u8 {{
+    pub fn cost(&self, movetype: &MoveType) -> u8 {{
         match movetype {{"
     )?;
     for movetype in movetypes.keys().sorted() {
@@ -182,7 +182,8 @@ fn define_movetype(
         file,
         "       }}
     }}
-}}"
+}}
+"
     )?;
     Ok(())
 }
@@ -210,7 +211,7 @@ pub struct Tile {{
     } */
     writeln!(
         file,
-        "    pub fn move_cost(&self, movetype: MoveType) -> u8 {{"
+        "    pub fn move_cost(&self, movetype: &MoveType) -> u8 {{"
     )?;
     writeln!(file, "        self.move_data.cost(movetype)")?;
     writeln!(file, "    }}")?;
