@@ -45,25 +45,25 @@ impl GameMap {
         tileset::get_tile(self.terrain[self.width as usize * y + x]).unwrap()
     }
 
-    pub fn get_adjacent(&self, position: Position) -> Vec<[u8; 2]> {
+    pub fn get_adjacent(&self, position: Position) -> Vec<Position> {
         let [x, y] = position;
         let (width, height) = (self.width, self.height);
-        let check = |x: u8, y: u8| -> Option<[u8; 2]> {
-            if (0..=width).contains(&x) && (0..=height).contains(&y) {
-                return Some([x, y]);
-            }
-            return None;
-        };
+        let mut adjacent: Vec<Position> = Vec::with_capacity(4);
+        if x != 0 {
+            adjacent.push([x - 1, y]);
+        }
+        if x != width {
+            adjacent.push([x + 1, y]);
+        }
 
-        vec![
-            check(x + 1, y),
-            check(x - 1, y),
-            check(x, y + 1),
-            check(x, y - 1),
-        ]
-        .iter()
-        .filter_map(|pos| *pos)
-        .collect()
+        if y != 0 {
+            adjacent.push([x, y - 1]);
+        }
+        if y != height {
+            adjacent.push([x, y + 1]);
+        }
+
+        adjacent
     }
 }
 
