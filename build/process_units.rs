@@ -93,9 +93,9 @@ fn define_unit_struct(file: &mut BufWriter<File>) -> Result<(), std::io::Error> 
         "use entities::entity_data::UnitData;
 use crate::tileset::MoveType;
 
-pub struct Unit {{
-    pub name: &'static str,
-    pub unit_data: UnitData,
+struct Unit {{
+    name: &'static str,
+    unit_data: UnitData,
     move_type: MoveType
 }}\n"
     )?;

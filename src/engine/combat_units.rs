@@ -21,18 +21,15 @@ impl Hash for Unit {
 }
 
 impl Unit {
-
-    // TODO occupied unit logic needs to be done
     /// Implements a BFS for figuring out what tiles are accessible for a unit
     pub fn get_moveable(&self, game: &Game) -> HashSet<Position> {
-        let unit_type = &self.unit_type;
-        let movetype = unit_type.movetype();
-        let mobility = min(unit_type.data().moves(), self.fuel);
+        let movetype = &self.unit_type.movetype();
+        let mobility = min(self.unit_type.data().moves(), self.fuel);
         // The queue must only be as big as the 2nd largest ring, which is 4 * (mobility -1)
         let mut queue: VecDeque<(Position, u8)> =
             VecDeque::with_capacity(min(4 * (mobility - 1), 1) as usize);
-        let mut visited: HashSet<Position> = HashSet::from([self.position]);
-        let mut checked: HashSet<Position> = HashSet::new();
+        let mut moveable: HashSet<Position> = HashSet::from([self.position]);
+        let mut not_moveable: HashSet<Position> = HashSet::new();
 
         let map = &game.map;
         let occupying_team = &game.occupying_team;
@@ -42,35 +39,40 @@ impl Unit {
             let (position, mobility) = queue.pop_front().unwrap();
             for position in map.get_adjacent(position) {
                 // Don't recheck tiles
-                if checked.contains(&position) {
+                if not_moveable.contains(&position) || moveable.contains(&position) {
                     continue;
                 }
-                checked.insert(position);
-                
+
                 // Now check if you can move onto the tile
                 let tile = map.terrain_at(position);
                 let cost = tile.move_cost(&movetype);
-                if cost == 0 {
+                if cost == std::u8::MAX {
                     continue;
                 }
                 let remaining_mobility = mobility - cost;
-                
+
                 let occupant = occupying_team.get(&position);
                 // Check if the tile is occupied by an enemy team
                 match (0.cmp(&remaining_mobility), occupant) {
-                    (Ordering::Greater | Ordering::Equal ,None) => {
+                    (Ordering::Equal, None) => {
+                        moveable.insert(position);
+                    }
+                    (Ordering::Greater, None) => {
                         queue.push_back((position, remaining_mobility));
-                        visited.insert(position);
-                    },
+                        moveable.insert(position);
+                    }
                     (Ordering::Greater, Some(occupant)) => {
                         if occupant == team {
                             queue.push_back((position, remaining_mobility));
                         }
+                        not_moveable.insert(position);
                     }
-                    _ => {},
+                    _ => {
+                        not_moveable.insert(position);
+                    }
                 }
             }
         }
-        visited
+        moveable
     }
 }

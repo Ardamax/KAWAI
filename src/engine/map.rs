@@ -5,13 +5,14 @@ use std::fmt;
 use super::tileset::Tile;
 
 pub type Position = [u8; 2];
+pub type TileID = u8;
 
 /// Represents an Advance Wars map of maximum size 256x256 tiles
 #[derive(Debug)]
 pub struct GameMap {
     pub width: u8,
     pub height: u8,
-    terrain: Box<[u8]>,
+    terrain: Box<[TileID]>,
 }
 
 pub enum Weather {

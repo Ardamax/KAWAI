@@ -11,7 +11,6 @@ pub mod entity_data {
         destructible: bool,
         fogs: bool,
         sight: bool,
-        teleport: u8,
         defense: u8,
     }
 
@@ -22,7 +21,6 @@ pub mod entity_data {
             destructible: u8,
             fogs: u8,
             sight: u8,
-            teleport: u8,
             defense: u8,
         ) -> TileData {
             TileData {
@@ -31,7 +29,6 @@ pub mod entity_data {
                 destructible: destructible != 0,
                 fogs: fogs != 0,
                 sight: sight != 0,
-                teleport,
                 defense,
             }
         }
@@ -58,10 +55,6 @@ pub mod entity_data {
 
         pub fn def(&self) -> u8 {
             self.defense
-        }
-
-        pub fn is_teleport(&self) -> u8 {
-            self.teleport
         }
     }
 
@@ -135,13 +128,12 @@ mod tests {
     use crate::entity_data::*;
     #[test]
     fn test_tile_bitfields() {
-        let woods = TileData::define_tile(0, 0, 0, 1, 0, 0, 1);
+        let woods = TileData::define_tile(0, 0, 0, 1, 0, 1);
         assert!(!woods.building());
         assert!(!woods.funds());
         assert!(!woods.destructible());
         assert!(woods.fogs());
         assert!(!woods.sight());
-        assert_eq!(woods.is_teleport(), 0);
         assert_eq!(woods.def(), 1);
     }
 

@@ -55,13 +55,13 @@ const PLAINS: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 2,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0, 1,)
+    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 1,)
 };
 const WOODS: Tile = Tile {
     name: "Woods",
@@ -69,13 +69,13 @@ const WOODS: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 3,
         treads_cost : 2,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 1, 0, 0, 2,)
+    tile_data: TileData::define_tile( 0, 0, 0, 1, 0, 2,)
 };
 const MOUNTAINS: Tile = Tile {
     name: "Mountains",
@@ -83,13 +83,13 @@ const MOUNTAINS: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 2,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
-        tires_cost : 0,
-        treads_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
+        tires_cost : 255,
+        treads_cost : 255,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 0, 1, 0, 4,)
+    tile_data: TileData::define_tile( 0, 0, 0, 0, 1, 4,)
 };
 const ROADS: Tile = Tile {
     name: "Roads",
@@ -97,13 +97,13 @@ const ROADS: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 1,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0, 0,)
+    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0,)
 };
 const RIVERS: Tile = Tile {
     name: "Rivers",
@@ -111,41 +111,41 @@ const RIVERS: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 2,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
-        tires_cost : 0,
-        treads_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
+        tires_cost : 255,
+        treads_cost : 255,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0, 0,)
+    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0,)
 };
 const PIPES: Tile = Tile {
     name: "Pipes",
     move_data: MoveCost {
         air_cost : 0,
-        boot_cost : 0,
-        foot_cost : 0,
-        lander_cost : 0,
+        boot_cost : 255,
+        foot_cost : 255,
+        lander_cost : 255,
         pipe_cost : 1,
-        sea_cost : 0,
-        tires_cost : 0,
-        treads_cost : 0,
+        sea_cost : 255,
+        tires_cost : 255,
+        treads_cost : 255,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0, 0,)
+    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0,)
 };
 const PIPE_SEAM: Tile = Tile {
     name: "Pipe Seam",
     move_data: MoveCost {
         air_cost : 0,
-        boot_cost : 0,
-        foot_cost : 0,
-        lander_cost : 0,
+        boot_cost : 255,
+        foot_cost : 255,
+        lander_cost : 255,
         pipe_cost : 1,
-        sea_cost : 0,
-        tires_cost : 0,
-        treads_cost : 0,
+        sea_cost : 255,
+        tires_cost : 255,
+        treads_cost : 255,
     },
-    tile_data: TileData::define_tile( 0, 0, 1, 0, 0, 0, 0,)
+    tile_data: TileData::define_tile( 0, 0, 1, 0, 0, 0,)
 };
 const BROKEN_PIPES: Tile = Tile {
     name: "Broken Pipes",
@@ -153,13 +153,13 @@ const BROKEN_PIPES: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 2,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0, 1,)
+    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 1,)
 };
 const LOADED_MISSILE_SILO: Tile = Tile {
     name: "Loaded Missile Silo",
@@ -167,13 +167,13 @@ const LOADED_MISSILE_SILO: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 1,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0, 3,)
+    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 3,)
 };
 const UNLOADED_MISSILE_SILO: Tile = Tile {
     name: "Unloaded Missile Silo",
@@ -181,41 +181,41 @@ const UNLOADED_MISSILE_SILO: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 1,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0, 3,)
+    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 3,)
 };
 const SEA: Tile = Tile {
     name: "Sea",
     move_data: MoveCost {
         air_cost : 1,
-        boot_cost : 0,
-        foot_cost : 0,
+        boot_cost : 255,
+        foot_cost : 255,
         lander_cost : 1,
-        pipe_cost : 0,
+        pipe_cost : 255,
         sea_cost : 1,
-        tires_cost : 0,
-        treads_cost : 0,
+        tires_cost : 255,
+        treads_cost : 255,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0, 0,)
+    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0,)
 };
 const REEFS: Tile = Tile {
     name: "Reefs",
     move_data: MoveCost {
         air_cost : 1,
-        boot_cost : 0,
-        foot_cost : 0,
+        boot_cost : 255,
+        foot_cost : 255,
         lander_cost : 2,
-        pipe_cost : 0,
+        pipe_cost : 255,
         sea_cost : 2,
-        tires_cost : 0,
-        treads_cost : 0,
+        tires_cost : 255,
+        treads_cost : 255,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 1, 0, 0, 1,)
+    tile_data: TileData::define_tile( 0, 0, 0, 1, 0, 1,)
 };
 const SHOALS: Tile = Tile {
     name: "Shoals",
@@ -224,12 +224,12 @@ const SHOALS: Tile = Tile {
         boot_cost : 1,
         foot_cost : 1,
         lander_cost : 1,
-        pipe_cost : 0,
-        sea_cost : 0,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 1,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0, 0,)
+    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0,)
 };
 const HEADQUARTERS: Tile = Tile {
     name: "Headquarters",
@@ -237,13 +237,13 @@ const HEADQUARTERS: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 1,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 1, 1, 0, 0, 0, 0, 4,)
+    tile_data: TileData::define_tile( 1, 1, 0, 0, 0, 4,)
 };
 const CITY: Tile = Tile {
     name: "City",
@@ -251,13 +251,13 @@ const CITY: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 1,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 1, 1, 0, 0, 0, 0, 3,)
+    tile_data: TileData::define_tile( 1, 1, 0, 0, 0, 3,)
 };
 const BASE: Tile = Tile {
     name: "Base",
@@ -265,13 +265,13 @@ const BASE: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
+        lander_cost : 255,
         pipe_cost : 1,
-        sea_cost : 0,
+        sea_cost : 255,
         tires_cost : 1,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 1, 1, 0, 0, 0, 0, 3,)
+    tile_data: TileData::define_tile( 1, 1, 0, 0, 0, 3,)
 };
 const AIRPORT: Tile = Tile {
     name: "Airport",
@@ -279,13 +279,13 @@ const AIRPORT: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 1,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 1, 1, 0, 0, 0, 0, 3,)
+    tile_data: TileData::define_tile( 1, 1, 0, 0, 0, 3,)
 };
 const PORT: Tile = Tile {
     name: "Port",
@@ -294,12 +294,12 @@ const PORT: Tile = Tile {
         boot_cost : 1,
         foot_cost : 1,
         lander_cost : 1,
-        pipe_cost : 0,
+        pipe_cost : 255,
         sea_cost : 1,
         tires_cost : 1,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 1, 1, 0, 0, 0, 0, 3,)
+    tile_data: TileData::define_tile( 1, 1, 0, 0, 0, 3,)
 };
 const LAB: Tile = Tile {
     name: "Lab",
@@ -307,13 +307,13 @@ const LAB: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 1,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 1, 0, 0, 0, 0, 0, 3,)
+    tile_data: TileData::define_tile( 1, 0, 0, 0, 0, 3,)
 };
 const COMM_TOWER: Tile = Tile {
     name: "Comm Tower",
@@ -321,13 +321,13 @@ const COMM_TOWER: Tile = Tile {
         air_cost : 1,
         boot_cost : 1,
         foot_cost : 1,
-        lander_cost : 0,
-        pipe_cost : 0,
-        sea_cost : 0,
+        lander_cost : 255,
+        pipe_cost : 255,
+        sea_cost : 255,
         tires_cost : 1,
         treads_cost : 1,
     },
-    tile_data: TileData::define_tile( 1, 0, 0, 0, 0, 0, 3,)
+    tile_data: TileData::define_tile( 1, 0, 0, 0, 0, 3,)
 };
 const TELEPORT: Tile = Tile {
     name: "Teleport",
@@ -341,7 +341,7 @@ const TELEPORT: Tile = Tile {
         tires_cost : 0,
         treads_cost : 0,
     },
-    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 1, 0,)
+    tile_data: TileData::define_tile( 0, 0, 0, 0, 0, 0,)
 };
 use::std::error::Error;
 pub fn get_tile(id:u8) -> Result<Tile, Box<dyn Error>> {
